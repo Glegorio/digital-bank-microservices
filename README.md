@@ -306,8 +306,8 @@ A documentação interativa estará acessível via navegador em:
 - [x] Configuração base do Spring Boot e plugin do Flyway
 - [x] DDL inicial de persistência (`V1__create_customers_table.sql`)
 - [x] Mapeamento ORM da entidade `Customer` e enum `CustomerStatus`
-- [ ] Implementação do `CustomerRepository` com queries de existência
-- [ ] Construção dos DTOs com validações `@NotBlank`, `@CPF`, `@Email`
+- [x] Implementação do `CustomerRepository` com queries de existência
+- [x] Construção dos DTOs com validações `@NotBlank`, `@CPF`, `@Email`
 - [ ] Camada de serviço `CustomerService` com validações de unicidade e regras de negócio
 - [ ] `CustomerController` com suporte ao contrato REST e cabeçalho `Location`
 - [ ] Handler global de exceções (`@RestControllerAdvice`)
