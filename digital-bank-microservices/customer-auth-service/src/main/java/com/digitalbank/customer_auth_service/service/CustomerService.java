@@ -3,11 +3,14 @@ package com.digitalbank.customer_auth_service.service;
 import com.digitalbank.customer_auth_service.dto.request.CustomerRequest;
 import com.digitalbank.customer_auth_service.dto.response.CustomerResponse;
 import com.digitalbank.customer_auth_service.exception.CustomerAlreadyExistsException;
+import com.digitalbank.customer_auth_service.exception.CustomerNotFoundException;
 import com.digitalbank.customer_auth_service.model.Customer;
 import com.digitalbank.customer_auth_service.model.CustomerStatus;
 import com.digitalbank.customer_auth_service.repository.CustomerRepository;
-import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 public class CustomerService {
@@ -44,6 +47,32 @@ public class CustomerService {
         Customer savedCustomer = customerRepository.save(customer);
 
         return toResponse(savedCustomer);
+    }
+
+    @Transactional(readOnly = true)
+    public List<CustomerResponse> findAll(){
+        return customerRepository.findAll()
+                .stream()
+                .map(this::toResponse)
+                .toList();
+    }
+
+    @Transactional(readOnly = true)
+    public CustomerResponse findById(Long id){
+        Customer customer = customerRepository.findById(id)
+                .orElseThrow(() -> new CustomerNotFoundException(
+                        "Cliente não encontrado com ID: " + id
+                ));
+        return toResponse(customer);
+    }
+
+    @Transactional(readOnly = true)
+    public CustomerResponse findByCpf(String cpf){
+        Customer customer = customerRepository.findByCpf(cpf)
+                .orElseThrow(() -> new CustomerNotFoundException(
+                        "Cliente não encontrado com CPF: " + cpf
+                ));
+        return toResponse(customer);
     }
 
     private CustomerResponse toResponse(Customer customer){

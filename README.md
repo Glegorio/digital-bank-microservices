@@ -308,9 +308,9 @@ A documentação interativa estará acessível via navegador em:
 - [x] Mapeamento ORM da entidade `Customer` e enum `CustomerStatus`
 - [x] Implementação do `CustomerRepository` com queries de existência
 - [x] Construção dos DTOs com validações `@NotBlank`, `@CPF`, `@Email`
-- [ ] Camada de serviço `CustomerService` com validações de unicidade e regras de negócio
-- [ ] `CustomerController` com suporte ao contrato REST e cabeçalho `Location`
-- [ ] Handler global de exceções (`@RestControllerAdvice`)
+- [x] Camada de serviço `CustomerService` com validações de unicidade e regras de negócio
+- [x] `CustomerController` com suporte ao contrato REST e cabeçalho `Location`
+- [x] Handler global de exceções (`@RestControllerAdvice`)
 - [ ] Integração com Spring Security e geração de Token JWT (HMAC / RSA)
 
 ### Fase 2: `account-service`
